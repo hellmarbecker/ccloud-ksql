@@ -4,10 +4,10 @@ export CC_CONFIG=~/.ccloud/config.json
 export CC_ENV=$(ccloud environment list -o human | awk '/\*/ { print $2; }')
 export CC_KAFKA_CLUSTER=$(ccloud kafka cluster list -o human | awk '/\*/ { print $2; }')
 
-export CC_KAFKA_URL=$(jq ".contexts[].kafka_cluster_context.kafka_environment_contexts[\"${CC_ENV}\"].kafka_cluster_infos[\"${CC_KAFKA_CLUSTER}\"].api_endpoint" ${CC_CONFIG})
-export CC_KAFKA_APIKEY=$(jq ".contexts[].kafka_cluster_context.kafka_environment_contexts[\"${CC_ENV}\"].kafka_cluster_infos[\"${CC_KAFKA_CLUSTER}\"].api_keys[].api_key" ${CC_CONFIG})
-export CC_KAFKA_SECRET=$(jq ".contexts[].kafka_cluster_context.kafka_environment_contexts[\"${CC_ENV}\"].kafka_cluster_infos[\"${CC_KAFKA_CLUSTER}\"].api_keys[].api_secret" ${CC_CONFIG})
+export CC_KAFKA_URL=$(jq ".contexts[].kafka_cluster_context.kafka_environment_contexts[\"${CC_ENV}\"].kafka_cluster_infos[\"${CC_KAFKA_CLUSTER}\"].api_endpoint" ${CC_CONFIG} | tr -d \")
+export CC_KAFKA_APIKEY=$(jq ".contexts[].kafka_cluster_context.kafka_environment_contexts[\"${CC_ENV}\"].kafka_cluster_infos[\"${CC_KAFKA_CLUSTER}\"].api_keys[].api_key" ${CC_CONFIG} | tr -d \")
+export CC_KAFKA_SECRET=$(jq ".contexts[].kafka_cluster_context.kafka_environment_contexts[\"${CC_ENV}\"].kafka_cluster_infos[\"${CC_KAFKA_CLUSTER}\"].api_keys[].api_secret" ${CC_CONFIG} | tr -d \")
 
-export CC_SR_URL=$(jq ".contexts[].schema_registry_clusters[].schema_registry_endpoint" ${CC_CONFIG})
-export CC_SR_APIKEY=$(jq ".contexts[].schema_registry_clusters[].schema_registry_credentials.api_key" ${CC_CONFIG})
-export CC_SR_SECRET=$(jq ".contexts[].schema_registry_clusters[].schema_registry_credentials.api_secret" ${CC_CONFIG})
+export CC_SR_URL=$(jq ".contexts[].schema_registry_clusters[].schema_registry_endpoint" ${CC_CONFIG} | tr -d \")
+export CC_SR_APIKEY=$(jq ".contexts[].schema_registry_clusters[].schema_registry_credentials.api_key" ${CC_CONFIG} | tr -d \")
+export CC_SR_SECRET=$(jq ".contexts[].schema_registry_clusters[].schema_registry_credentials.api_secret" ${CC_CONFIG} | tr -d \")
