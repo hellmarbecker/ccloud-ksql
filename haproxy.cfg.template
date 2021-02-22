@@ -31,5 +31,6 @@ backend sr_backend
     option forwardfor
     option http-server-close
     option httpchk
-    server sr01 mysr.eu-central-1.aws.confluent.cloud maxconn 1000
+    server sr01 ${CC_SR_URL} maxconn 1000
+    reqadd Authorization:\ Basic\ ${CC_AUTH_BASE64}
 
