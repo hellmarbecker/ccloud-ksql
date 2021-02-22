@@ -1,5 +1,5 @@
-# ccloud-ksql
-Examples how to provision, tear down, and use KSQL in Confluent Cloud
+# ccloud-utils
+Examples how to provision, tear down, and use resources in Confluent Cloud
 ## Show the currently selected environment ID and cluster ID
 
 ```bash
